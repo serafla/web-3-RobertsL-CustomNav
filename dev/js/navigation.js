@@ -6,7 +6,7 @@ gsap.registerPlugin(ScrollToPlugin, ScrambleTextPlugin);
 
 gsap.set(".circle",{transformOrigin:"center"});
 
-let navLinks = gsap.utils.toArray("nav a");
+let navLinks = gsap.utils.toArray("#main-nav a");
 // let outlineButton = gsap.utils.toArray(".outline");
 let circleButton = gsap.utils.toArray(".circle");
 let textArray = gsap.utils.toArray(".text");

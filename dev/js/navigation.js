@@ -7,21 +7,29 @@ gsap.registerPlugin(ScrollToPlugin, ScrambleTextPlugin);
 gsap.set(".circle",{transformOrigin:"center"});
 
 let navLinks = gsap.utils.toArray("#main-nav a");
-// let outlineButton = gsap.utils.toArray(".outline");
-let circleButton = gsap.utils.toArray(".circle");
-let textArray = gsap.utils.toArray(".text");
-let currentLink = 0;
-let buttonText = ["Introduction.","Branding.","Web &#38; Motion","Typography."];
+console.log(navLinks.length + " nav length");
+
+export let circleButton = document.querySelectorAll(".circle");
+// let circleButton = gsap.utils.toArray(".circle");
+
+export let textArray = gsap.utils.toArray(".text");
+export let currentLink = 0;
+export let buttonText = ["INTRODUCTION.","BRANDING.","WEB & MOTION.","TYPOGRAPHY."];
 
 function menuSetUp(){
 	navLinks.forEach((link, i) => {
 		if(i !== 0){
-			gsap.set(circleButton[i],{scale: 1, backgroundColor: "#fff"})
-		}
-	});
+			gsap.set(circleButton[i],{scale: 1, backgroundColor: "#808080"})
+            // circleButton[i].classList.add("circle-selected");
+		} else {
+            gsap.set(circleButton[i],{scale: 1, backgroundColor: "transparent"})
+            circleButton[i].classList.add("circle-selected")
+        }
 	// force the portfolio to be selected
-	gsap.to(textArray[0], {duration: 0.25, scrambleText: "Introduction.", ease: "none"})
-}
+	gsap.to(textArray[0], {duration: 0.25, scrambleText: buttonText[0], ease: "none"})
+})}
+
+
 
 export function buttonClicks(){
 	console.log("clicks");
@@ -30,20 +38,24 @@ export function buttonClicks(){
     navLinks.forEach((link, i) => {
         link.addEventListener("click", e => {
             e.preventDefault();
-
-            console.log(currentLink);
             // set the currentLink
+
+            console.log(i + " index value");
+
+            // remove old circle class
+            circleButton[currentLink].classList.remove("circle-selected");
           
             gsap.to(window, {scrollTo: i * innerHeight});
 
-            console.log(i);
+            // animate in
             gsap.to(textArray[i], {duration: 0.25, scrambleText: buttonText[i], ease: "none"});
-            gsap.to(circleButton[i], {duration: 0.25, scale: 1, backgroundColor: "#000", ease: "none"});
-            gsap.to(circleButton[i], {duration: 0.25, backgroundColor: "#fff", ease: "none", delay:0.25});
-            // remove style the link to show the text
-
+            gsap.to(circleButton[i], {duration: 0.25, scale: 1, backgroundColor: "transparent", ease: "back.out(1.7)"});
+           
+            // animate out
             gsap.to(textArray[currentLink], {duration: 0.25, scrambleText: "", ease: "none"});
-            gsap.to(circleButton[currentLink], {duration: 0.25, backgroundColor: "#000", ease: "none"});
+            gsap.to(circleButton[currentLink], {duration: 0.25, backgroundColor: "#808080", ease: "none"});
+
+            circleButton[i].classList.add("circle-selected");
 
             currentLink = i;
           
@@ -75,7 +87,7 @@ export function buttonMouseEvents(){
             e.preventDefault();
             if(i != currentLink){
                 gsap.to(textArray[i], {duration: 0.25, scrambleText: "", ease: "none"});
-                gsap.to(circleButton[i], {duration: 0.25, scale:1, backgroundColor: "#000", ease: "none"});
+                gsap.to(circleButton[i], {duration: 0.25, scale:1, backgroundColor: "#808080", ease: "none"});
             }
         });
     });

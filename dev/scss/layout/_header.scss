@@ -3,9 +3,9 @@
 ============= */
 header {
     position: fixed;
-    right: 50px;
+    left: 50px;
     top: 40vh;
-    width: 250px;
+    // width: 150px;
 
         nav {
             ul {
@@ -13,6 +13,7 @@ header {
 
                     a {
                         display: flex;
+                        align-items: center;
                         height: 20px;
                         padding: 10px;
                         width: 100%;
@@ -24,25 +25,16 @@ header {
                                 padding-right: 10px;
 
                                 .circle {
-                                    
-                                    height: 10px;
-                                    width: 10px;
-                                    background-color: #000;
+                                    height: 8px;
+                                    width: 8px;
+                                    background-color: #808080;
                                     border-radius: 100%; 
-
+                                    // transition: background-color 1s;
                                 }
 
-
-                                // .outline {
-                                //     position: absolute;
-                                //     fill: 0;
-                                //     border: 2;
-                                //     height: 15px;
-                                //     width: 15px;
-                                //     background-color: #fff;
-                                //     border-radius: 100%; 
-
-                                // }
+                                .circle-selected {
+                                    border: 2px solid $white;
+                                }
     
                             }
                     

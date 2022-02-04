@@ -2,12 +2,12 @@
 let numberOfSections = 4;
 
 // array of colors for the list items
-let colors = ["#00FFFF","#FFFF00","#FF00FF","#222222"];
+let colors = ["#00008b","#013220","#AA336A","#222222"];
 
 // this will create a reference to the #section-container id in the content.kit file
 let contentContainer = document.querySelector("#content-container");
 
-let idNames = ["Introduction.", "Branding.", "Web Design.", "Typography."];
+let idNames = ["Introduction", "Branding", "WebDesign", "Typography"];
 
 export function createContent(){
     for(var i = 0; i < numberOfSections; i++){
